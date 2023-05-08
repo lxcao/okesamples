@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: acme-blog-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip 
+spec:
+  rules:
+  - host: www.acme.com
+    http:
+      paths:
+      - path: /blog
+        backend:
+          serviceName: acme-blog
+          servicePort: 80

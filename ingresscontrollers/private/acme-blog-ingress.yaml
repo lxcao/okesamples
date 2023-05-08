@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: acme-blog-ingress
+  namespace: acme
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - host: blog.acme.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: acme-blog
+          servicePort: 80

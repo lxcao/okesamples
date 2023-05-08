@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: acme-blog-ingress
+  annotations:
+    kubernetes.io/ingress.class: contour
+spec:
+  rules:
+  - host: www.acme.com
+    http:
+      paths:
+      - path: /blog
+        backend:
+          serviceName: acme-blog
+          servicePort: 80

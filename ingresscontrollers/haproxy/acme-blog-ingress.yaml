@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: acme-blog
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: www.acme.com
+    http:
+      paths:
+      - path: /blog
+        backend:
+          serviceName: acme-blog
+          servicePort: 80
